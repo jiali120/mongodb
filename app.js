@@ -1,10 +1,13 @@
 //jshint esversion:6
 
-const { MongoClient } = require("mongodb");
-const assert = require('assert');
+const mongoose = require('mongoose');
+
+//only use one line to replace 8 to 27 lines
+//connect database if the database not exist will creat one
+mongoose.connect("mongodb://localhost:27017/fruitsDB", { useNewUrlParser: true})
 
 // Replace the uri string with your connection string.
-const url ='mongodb://localhost:27107'
+/*const url ='mongodb://localhost:27107'
   //"mongodb+srv://<user>:<password>@<cluster-url>?retryWrites=true&w=majority";
 
   //database name
@@ -22,9 +25,85 @@ client.connect(function(err){
     findDocuments(db, function(){
         client.close();
     });   
+});*/
+
+
+//replace 51 to 93 lines
+//creat schema
+const fruitSchema = new mongoose.Schema ({
+  name: String,
+  rating: Number,
+  review: String
+})
+
+
+const Fruit = mongoose.model("Fruit", fruitSchema);
+
+const fruit = new Fruit ({
+  name: "apple",
+  rating: 8,
+  review: "Great"
+
 });
 
-const insertDocuments =  function(db, callback){
+fruit.save();
+
+//mogoose insert
+/*
+//if want to add new fruit
+const kiwi = new Fruit({
+  name: "kiwi",
+  score: 8,
+  review: "Great"
+  
+});
+
+const orange = new Fruit({
+  name: "orange",
+  score: 6,
+  review: "just so so"
+});
+*/
+
+// so now we add find function and then we will comment the insert function,
+//becasue if we still keep insert function, everytime when i run the code, 
+//our database will insert them again and again
+/*Fruit.insertMany([kiwi, orange], function(err){
+  if(err){
+    console.log(err);
+  }else{
+    console.log("succesfully saved all the fruit")
+  }
+});*/
+
+Fruit.find(function(err, fruits){
+  if(err){
+    console.log(err);
+  }else{
+    //console.log(fruits);
+
+    //after connection our database, we need to close it
+    mongoose.connection.close();
+
+    //loop thought fruits array that we got back from our database
+    fruits.forEach(function(fruit){
+      console.log(fruit.name);
+    })
+  }
+})
+
+
+
+
+
+
+
+
+
+
+
+//mongo
+/*const insertDocuments =  function(db, callback){
     //Get the documents collection 
     const collection = db.collection('fruits');
 
@@ -66,7 +145,7 @@ const findDocuments = function(db, callback){
         console.log(fruits)
         callback(fruits);
     })
-}
+}*/
 
 /*async function run() {
   try {
