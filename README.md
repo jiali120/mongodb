@@ -11,3 +11,7 @@
 3. show dbs   ------ can see db part
 4. use databaseName    ------ and then  show collections  ------- can see collection's name
 5. db.databaseName.find()     ------- show all data we currently have
+6. swithc to our database first:   use fruitsDB  ------- and then delete the database using:  db.dropDtabase()
+
+
+##### mongoose package elegant mongodb modeling for node.js---- ODM is Object Document Mapper   ----- it will allow the node.js app which speaks the language of js objects to be able to talk to the MongoDB database which speaks in the language of documents and collections and databases
