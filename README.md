@@ -7,3 +7,7 @@
 ####### npm init -y   -------------means yes for everything, we do not need to step by step see the package.json requirment
 
 1. mongod  ------- run mongodb
+2. write mongod first, and then node app.js to connect database
+3. show dbs   ------ can see db part
+4. use databaseName    ------ and then  show collections  ------- can see collection's name
+5. db.databaseName.find()     ------- show all data we currently have
