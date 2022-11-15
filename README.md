@@ -15,3 +15,6 @@
 
 
 ##### mongoose package elegant mongodb modeling for node.js---- ODM is Object Document Mapper   ----- it will allow the node.js app which speaks the language of js objects to be able to talk to the MongoDB database which speaks in the language of documents and collections and databases
+
+1. studio 3T is the professional GUI for MongoDB.
+2. turn on mongod first, and then use studio 3T to connect mongoDB, and we can creat database in studio 3T
